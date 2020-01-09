@@ -1,4 +1,8 @@
 spring:
+  profiles: 
+    active: dev
+---
+spring:
   profiles: dev
   application:
     name: consumer
@@ -43,53 +47,3 @@ eureka:
 feign:
   hystrix:
     enabled: true
----
-spring:
-  profiles: test
-  application:
-    name: zuul-application
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useSSL=false
-    username: root
-    password: 123456
-    
-server:
-  port: 8082
-
-eureka:
-  client:
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8080/eureka
-
-zuul:
-  routes:
-    api-a:
-      path: /api-a/**
-      serviceId: provider
----
-spring:
-  profiles: dev
-  application:
-    name: zuul-application
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useSSL=false
-    username: root
-    password: 123456
-    
-server:
-  port: 8082
-
-eureka:
-  client:
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8080/eureka
-
-zuul:
-  routes:
-    api-a:
-      path: /api-a/**
-      serviceId: provider
